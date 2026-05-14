@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SOP-TD-001 · Quy trình Quản lý Bộ phận Đào tạo · Citics</title>
+<style>
+  :root {
+    --blue: #0046FF;
+    --blue-dark: #0033B8;
+    --blue-soft: #E8EEFF;
+    --amber: #FFBF01;
+    --amber-soft: #FFF5D6;
+    --slate-900: #0F172A;
+    --slate-700: #334155;
+    --slate-500: #64748B;
+    --slate-300: #CBD5E1;
+    --slate-100: #F1F5F9;
+    --slate-50: #F8FAFC;
+    --green: #10B981;
+    --green-soft: #D1FAE5;
+    --red: #EF4444;
+    --red-soft: #FEE2E2;
+    --purple: #7C3AED;
+    --teal: #0D9488;
+    --indigo: #4F46E5;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,0.06);
+    --shadow-md: 0 4px 12px rgba(15,23,42,0.08);
+    --shadow-lg: 0 16px 40px rgba(15,23,42,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+    color: var(--slate-900);
+    background: linear-gradient(180deg, #FAFBFF 0%, #F1F5F9 100%);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  header.doc-head {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    color: white;
+    padding: 36px 32px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-lg);
+  }
+  header.doc-head .badge {
+    background: rgba(255,191,1,0.2);
+    border: 1px solid rgba(255,191,1,0.45);
+    color: var(--amber);
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  header.doc-head h1 {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  header.doc-head .subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 18px;
+  }
+  header.doc-head .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px 24px;
+    font-size: 12px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 16px;
+  }
+  header.doc-head .meta div { opacity: 0.92; }
+  header.doc-head .meta b { font-weight: 700; opacity: 1; display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 2px; opacity: 0.7; }
+
+  .section {
+    background: white;
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin-bottom: 22px;
+    border: 1px solid var(--slate-100);
+    box-shadow: var(--shadow-sm);
+  }
+  .section h2 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--blue);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--slate-100);
+  }
+  .section h2 .num { color: var(--blue-dark); font-weight: 800; margin-right: 8px; }
+
+  .sub-block { margin-top: 18px; }
+  .sub-block:first-child { margin-top: 0; }
+  .subhead {
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--slate-700);
+    margin: 0 0 10px;
+  }
+  .subhead .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--blue-soft);
+    color: var(--blue-dark);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  p, li { font-size: 13.5px; color: var(--slate-700); line-height: 1.65; }
+  p + p { margin-top: 10px; }
+  ul, ol { margin: 6px 0 6px 22px; }
+  li { margin: 4px 0; }
+
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  table.data th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--slate-50);
+    color: var(--slate-700);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--slate-300);
+  }
+  table.data td {
+    padding: 11px 12px;
+    color: var(--slate-700);
+    border-bottom: 1px solid var(--slate-100);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  table.data tr:last-child td { border-bottom: 0; }
+  table.data td.num {
+    font-weight: 800;
+    color: var(--slate-900);
+    width: 64px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  table.data td.code {
+    font-weight: 700;
+    color: var(--slate-900);
+    white-space: nowrap;
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 12px;
+  }
+  table.data td.name { font-weight: 700; color: var(--slate-900); }
+
+  .group-card {
+    border: 1px solid var(--slate-100);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    background: var(--slate-50);
+  }
+  .group-card.core { border-left: 4px solid var(--blue); }
+  .group-card.support { border-left: 4px solid var(--teal); }
+  .group-card.management { border-left: 4px solid var(--indigo); }
+  .group-card h3 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--slate-900);
+    margin-bottom: 4px;
+  }
+  .group-card .desc { font-size: 12.5px; color: var(--slate-500); margin-bottom: 12px; }
+
+  .interface-note {
+    background: var(--amber-soft);
+    border-left: 3px solid var(--amber);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    color: #78350F;
+    margin-top: 12px;
+  }
+  .interface-note b { color: #92400E; }
+
+  .raci-cell { text-align: center; font-weight: 700; font-size: 12px; }
+  .raci-cell.r { color: var(--red); }
+  .raci-cell.a { color: var(--blue); }
+  .raci-cell.c { color: var(--purple); }
+  .raci-cell.i { color: var(--slate-500); }
+
+  footer.doc-foot {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--slate-500);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 20px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--slate-100);
+  }
+
+  @media print {
+    body { background: white; }
+    .section, footer.doc-foot { box-shadow: none; border: 1px solid var(--slate-300); }
+    header.doc-head { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="doc-head">
+    <span class="badge">SOP-TD-001 · Phiên bản 1.0 · Bản thảo trình duyệt</span>
+    <h1>Quy trình Quản lý Bộ phận Đào tạo</h1>
+    <div class="subtitle">Tài liệu cấp khung của Bộ phận Đào tạo, Citics Agent Cooperation Network</div>
+    <div class="meta">
+      <div><b>Người soạn</b>Jayden Pham</div>
+      <div><b>Người phê duyệt</b>Head of CACN</div>
+      <div><b>Cấp ghi nhận</b>CEO Citics</div>
+      <div><b>Ngày ban hành</b>Chờ phê duyệt</div>
+      <div><b>Chu kỳ rà soát</b>12 tháng một lần</div>
+      <div><b>Tài liệu thay thế</b>Không</div>
+    </div>
+  </header>
+
+  <!-- MỤC 1 -->
+  <section class="section">
+    <h2><span class="num">Mục 1.</span>Phạm vi áp dụng</h2>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">1.1</span>Bộ phận áp dụng</div>
+      <p>Tài liệu này áp dụng cho Bộ phận Đào tạo (Training Department, viết tắt BP Đào tạo) thuộc Citics Agent Cooperation Network (CACN).</p>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">1.2</span>Đối tượng học viên</div>
+      <p>Tài liệu này quy định quy trình đào tạo cho ba nhóm đối tượng theo thứ tự ưu tiên:</p>
+      <ol>
+        <li>Agent đã đăng ký dịch vụ qua App Citics</li>
+        <li>Store Manager thuộc ba dạng sàn: Inhouse, Partnership, Virtual</li>
+        <li>Nhân sự nội bộ thuộc CACN, BU, và Store</li>
+      </ol>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">1.3</span>Phạm vi bắt buộc</div>
+      <p>Quy trình mô tả trong tài liệu này bắt buộc áp dụng cho:</p>
+      <ul>
+        <li>Mọi hoạt động đào tạo do CACN dẫn dắt</li>
+        <li>Mọi Agent đi qua chu trình Onboarding và Kích hoạt dịch vụ của CACN</li>
+        <li>Mọi yêu cầu đào tạo do BU hoặc Store gửi tới Bộ phận Đào tạo qua kênh tiếp nhận chính thức</li>
+      </ul>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">1.4</span>Phạm vi khuyến nghị</div>
+      <p>Hoạt động đào tạo nội bộ do BU hoặc Store tự tổ chức không qua Bộ phận Đào tạo có thể tham chiếu quy trình này như chuẩn tham khảo. Đơn vị tự tổ chức chịu trách nhiệm về chất lượng và hồ sơ đào tạo.</p>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">1.5</span>Ngoại lệ</div>
+      <p>Trường hợp sai khác với quy trình do điều kiện đặc thù phải được Head of CACN phê duyệt trước khi thực hiện và ghi vào Nhật ký ngoại lệ. Mọi ngoại lệ được rà soát trong Họp Xem xét cấp Khối định kỳ.</p>
+    </div>
+  </section>
+
+  <!-- MỤC 2 -->
+  <section class="section">
+    <h2><span class="num">Mục 2.</span>Tài liệu viện dẫn</h2>
+    <table class="data">
+      <tr>
+        <th>STT</th>
+        <th>Tên tài liệu</th>
+        <th>Loại</th>
+      </tr>
+      <tr>
+        <td class="num">01</td>
+        <td class="name">ISO 9001:2015 — Hệ thống quản lý chất lượng, các điều khoản 4 đến 10</td>
+        <td>Tiêu chuẩn quốc tế</td>
+      </tr>
+      <tr>
+        <td class="num">02</td>
+        <td class="name">Luật Lao động số 45/2019/QH14 ngày 20/11/2019</td>
+        <td>Văn bản pháp luật</td>
+      </tr>
+      <tr>
+        <td class="num">03</td>
+        <td class="name">Quyết định 0704/2026/QĐ-CACN ngày 07/04/2026 về vai trò Agent</td>
+        <td>Văn bản nội bộ CACN</td>
+      </tr>
+      <tr>
+        <td class="num">04</td>
+        <td class="name">Nội quy lao động Citics, phiên bản hiện hành</td>
+        <td>Văn bản nội bộ Citics</td>
+      </tr>
+      <tr>
+        <td class="num">05</td>
+        <td class="name">Quy chế nội bộ CACN, phiên bản hiện hành</td>
+        <td>Văn bản nội bộ CACN</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- MỤC 3 -->
+  <section class="section">
+    <h2><span class="num">Mục 3.</span>Thuật ngữ và Định nghĩa</h2>
+    <table class="data">
+      <tr>
+        <th style="width: 22%;">Thuật ngữ</th>
+        <th>Định nghĩa</th>
+      </tr>
+      <tr>
+        <td class="name">Agent</td>
+        <td>Người đã đăng ký dịch vụ với Citics qua App Citics, được CACN đào tạo và kích hoạt dịch vụ trước khi vào kinh doanh trên mạng lưới. Phân biệt với User: User chỉ tải App, chưa đăng ký dịch vụ.</td>
+      </tr>
+      <tr>
+        <td class="name">Vai trò Agent</td>
+        <td>Lĩnh vực chuyên môn Agent đăng ký phục vụ, quy định tại Quyết định 0704/2026. Bốn vai trò đang mở: Listing Agent, Buyer Agent (cùng thuộc BU Homes Secondary); Mortgages Agent (BU Mortgages); Value Agent (BU Value). Một vai trò đang phát triển: Legal Agent.</td>
+      </tr>
+      <tr>
+        <td class="name">BU (Business Unit)</td>
+        <td>Đơn vị kinh doanh thuộc Citics, quản trị sản phẩm, dịch vụ, chính sách, chương trình kinh doanh. Hiện có ba BU: Mortgages, Homes Secondary, Value.</td>
+      </tr>
+      <tr>
+        <td class="name">Store</td>
+        <td>Sàn cung cấp dịch vụ thuộc mạng lưới Citics, phân ba dạng: Inhouse, Partnership, Virtual.</td>
+      </tr>
+      <tr>
+        <td class="name">Store Inhouse</td>
+        <td>Sàn do Citics sở hữu pháp nhân, vận hành trực tiếp. Store Manager hưởng lương cứng và nhận chỉ tiêu tuyển dụng nội bộ.</td>
+      </tr>
+      <tr>
+        <td class="name">Store Partnership</td>
+        <td>Sàn của công ty đối tác đã có pháp nhân, hợp tác với Citics, sử dụng nền tảng và nguồn lực Citics để triển khai dịch vụ ngoài mua bán. Hoa hồng tự chia.</td>
+      </tr>
+      <tr>
+        <td class="name">Store Virtual</td>
+        <td>Sàn chưa có pháp nhân, hợp tác sử dụng nền tảng và nguồn lực Citics. Store Manager không hưởng lương cứng. Hoa hồng tự chia.</td>
+      </tr>
+      <tr>
+        <td class="name">Store Manager (SM)</td>
+        <td>Người quản lý sàn, chịu trách nhiệm vận hành sàn và đốc thúc Agent dưới sàn hoàn thành chương trình đào tạo.</td>
+      </tr>
+      <tr>
+        <td class="name">Kích hoạt dịch vụ</td>
+        <td>Bước cấp quyền cho Agent vào kinh doanh trên mạng lưới Citics. Điều kiện kích hoạt: Agent đã hoàn thành chương trình Onboarding của CACN và đạt bài đánh giá.</td>
+      </tr>
+      <tr>
+        <td class="name">LMS</td>
+        <td>Learning Management System, hệ thống quản lý học tập trực tuyến sử dụng cho đào tạo của Bộ phận Đào tạo.</td>
+      </tr>
+      <tr>
+        <td class="name">Quy trình Core (Tạo giá trị)</td>
+        <td>Quy trình phục vụ trực tiếp người học, gồm P1 và P2.</td>
+      </tr>
+      <tr>
+        <td class="name">Quy trình Support (Hỗ trợ)</td>
+        <td>Quy trình cung cấp năng lực để quy trình Core chạy, gồm S1 và S2.</td>
+      </tr>
+      <tr>
+        <td class="name">Quy trình Management (Quản trị)</td>
+        <td>Quy trình lái và đảm bảo chất lượng, gồm M1, M2, M3.</td>
+      </tr>
+      <tr>
+        <td class="name">ADDIE</td>
+        <td>Chu trình thiết kế đào tạo gồm năm bước: Phân tích (Analysis), Thiết kế (Design), Phát triển (Development), Triển khai (Implementation), Đánh giá (Evaluation).</td>
+      </tr>
+      <tr>
+        <td class="name">COM-B</td>
+        <td>Capability — Opportunity — Motivation — Behaviour. Khung chẩn đoán hành vi dùng để xác định nguyên nhân gốc khi tiếp nhận yêu cầu đào tạo, phân biệt giữa thiếu năng lực, thiếu công cụ-quy trình, và thiếu động lực.</td>
+      </tr>
+      <tr>
+        <td class="name">LTEM</td>
+        <td>Learning-Transfer Evaluation Model. Mô hình đánh giá hiệu quả đào tạo gồm tám cấp, sử dụng cho quy trình M1.</td>
+      </tr>
+      <tr>
+        <td class="name">RACI</td>
+        <td>Responsible — Accountable — Consulted — Informed. Ma trận phân bổ trách nhiệm sử dụng trong Mục 5.</td>
+      </tr>
+      <tr>
+        <td class="name">Cổng kiểm soát chất lượng</td>
+        <td>Điểm kiểm tra bắt buộc trong chu trình ADDIE (ký hiệu G1 đến G6). Không qua cổng không sang bước kế tiếp.</td>
+      </tr>
+      <tr>
+        <td class="name">Trained</td>
+        <td>Chỉ số đo số học viên đã tham gia đào tạo, tính theo điểm danh hoặc hoàn thành tối thiểu một mô-đun.</td>
+      </tr>
+      <tr>
+        <td class="name">Passed Test</td>
+        <td>Chỉ số đo số học viên đạt bài đánh giá với ngưỡng đạt tối thiểu 80%.</td>
+      </tr>
+      <tr>
+        <td class="name">Sự không phù hợp</td>
+        <td>Bất kỳ sai lệch nào giữa quy trình quy định và thực tế thực hiện, hoặc kết quả không đạt mục tiêu đã đặt ra.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- MỤC 4 -->
+  <section class="section">
+    <h2><span class="num">Mục 4.</span>Bối cảnh Bộ phận Đào tạo</h2>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">4.1</span>Sứ mệnh</div>
+      <p>Cung cấp năng lực cho Agent, Store Manager, và nhân sự nội bộ CACN, BU, Store để vận hành mạng lưới Citics đạt chuẩn chất lượng và tuân thủ.</p>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">4.2</span>Mục tiêu chiến lược</div>
+      <ul>
+        <li>Đảm bảo mọi Agent vào mạng lưới đạt năng lực tối thiểu thông qua chu trình Onboarding của CACN.</li>
+        <li>Cung cấp đào tạo theo yêu cầu cho BU, Store, và nhân sự nội bộ với thời gian xử lý cam kết.</li>
+        <li>Đo lường hiệu quả đào tạo theo bốn cấp đầu của LTEM, ưu tiên cấp ba (Hành vi áp dụng sau đào tạo).</li>
+        <li>Quản lý tài liệu và hồ sơ đào tạo theo yêu cầu của ISO 9001:2015 điều khoản 7.5.</li>
+      </ul>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">4.3</span>Các bên liên quan và nhu cầu</div>
+      <table class="data">
+        <tr>
+          <th>Bên liên quan</th>
+          <th>Nhu cầu chính</th>
+        </tr>
+        <tr>
+          <td class="name">Head of CACN</td>
+          <td>Báo cáo định kỳ KPI Trained và Passed Test theo tuần, tháng, quý. Phê duyệt chương trình đào tạo cấp khối. Phê duyệt kế hoạch năm của Bộ phận Đào tạo.</td>
+        </tr>
+        <tr>
+          <td class="name">CEO Citics</td>
+          <td>Ghi nhận tài liệu cấp Bộ phận. Nhận báo cáo định kỳ qua Head of CACN.</td>
+        </tr>
+        <tr>
+          <td class="name">BU Head</td>
+          <td>Cung cấp nội dung chuyên môn theo vai trò Agent. Phê duyệt danh sách học viên nội bộ thuộc BU. Yêu cầu đào tạo đặc thù theo sản phẩm hoặc chính sách mới.</td>
+        </tr>
+        <tr>
+          <td class="name">Store Manager</td>
+          <td>Tiếp nhận thông tin lịch đào tạo, danh sách Agent dưới sàn cần hoàn thành, kết quả đào tạo. Đôn đốc Agent hoàn thành đúng hạn.</td>
+        </tr>
+        <tr>
+          <td class="name">Agent</td>
+          <td>Tiếp cận chương trình Onboarding, học liệu, bài đánh giá. Nhận xác nhận kích hoạt dịch vụ sau khi đạt.</td>
+        </tr>
+        <tr>
+          <td class="name">Nhân sự nội bộ CACN, BU, Store</td>
+          <td>Tiếp cận chương trình đào tạo nội bộ về quy trình, hệ thống, chính sách của Citics.</td>
+        </tr>
+        <tr>
+          <td class="name">Giảng viên và chuyên gia nội dung</td>
+          <td>Nhận đề bài và yêu cầu thiết kế nội dung. Thực hiện đào tạo theo lịch. Phản hồi kết quả học viên.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">4.4</span>Danh mục Dịch vụ</div>
+      <table class="data">
+        <tr>
+          <th>Mã</th>
+          <th>Dịch vụ</th>
+          <th>Đối tượng</th>
+          <th>Tần suất</th>
+        </tr>
+        <tr>
+          <td class="code">DV-01</td>
+          <td class="name">Đào tạo Hội nhập Agent</td>
+          <td>Agent mới từ hai nguồn: SM tự tuyển và Agent tự đăng ký với CACN</td>
+          <td>Theo đợt định kỳ</td>
+        </tr>
+        <tr>
+          <td class="code">DV-02</td>
+          <td class="name">Đào tạo Hội nhập Store Manager</td>
+          <td>SM mới thuộc ba dạng sàn: Inhouse, Partnership, Virtual</td>
+          <td>Theo nhu cầu</td>
+        </tr>
+        <tr>
+          <td class="code">DV-03</td>
+          <td class="name">Đào tạo theo Yêu cầu</td>
+          <td>BU, Store, nhân sự nội bộ; yêu cầu gửi qua cổng tiếp nhận chính thức</td>
+          <td>Theo yêu cầu</td>
+        </tr>
+        <tr>
+          <td class="code">DV-04</td>
+          <td class="name">Tái đào tạo và kiểm tra định kỳ</td>
+          <td>Agent đã kích hoạt, nhân sự nội bộ</td>
+          <td>Theo lịch định kỳ</td>
+        </tr>
+        <tr>
+          <td class="code">DV-05</td>
+          <td class="name">Đào tạo nâng cao theo chuyên đề</td>
+          <td>Đối tượng được Head of CACN phê duyệt</td>
+          <td>Theo kế hoạch năm</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- MỤC 5 -->
+  <section class="section">
+    <h2><span class="num">Mục 5.</span>Vai trò và Trách nhiệm</h2>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">5.1</span>Sơ đồ tổ chức Bộ phận Đào tạo</div>
+      <p>Bộ phận Đào tạo trực thuộc Head of CACN. Bên trong Bộ phận gồm các vị trí chuyên môn sau:</p>
+      <ul>
+        <li>Trưởng Bộ phận Đào tạo (Training Manager)</li>
+        <li>Chuyên viên Thiết kế Chương trình (Instructional Designer)</li>
+        <li>Chuyên viên Vận hành Hệ thống Đào tạo (LMS Operator)</li>
+        <li>Chuyên viên Quản lý Nội dung và Giảng viên (Content & Trainer Coordinator)</li>
+        <li>Chuyên viên Đo lường và Báo cáo (Evaluation & Reporting Specialist)</li>
+      </ul>
+      <div class="interface-note"><b>Lưu ý:</b> Định biên cụ thể từng vị trí được nêu trong Quy hoạch Nhân sự năm, phê duyệt riêng bởi Head of CACN. Trong giai đoạn đầu, một người có thể đảm nhiệm nhiều vai trò, miễn không vi phạm nguyên tắc kiểm soát (người thiết kế không kiêm người đánh giá hiệu quả).</div>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">5.2</span>Trách nhiệm chính từng vai trò</div>
+      <table class="data">
+        <tr>
+          <th>Vai trò</th>
+          <th>Trách nhiệm chính</th>
+        </tr>
+        <tr>
+          <td class="name">Trưởng Bộ phận Đào tạo</td>
+          <td>Phê duyệt thiết kế chương trình; phân công nguồn lực; báo cáo Head of CACN; chủ trì Họp Xem xét cấp Bộ phận; ký các tài liệu cấp Bộ phận.</td>
+        </tr>
+        <tr>
+          <td class="name">Chuyên viên Thiết kế Chương trình</td>
+          <td>Thực hiện Phân tích nhu cầu (theo COM-B), Thiết kế, Phát triển nội dung; soạn bài đánh giá; phối hợp chuyên gia nội dung BU.</td>
+        </tr>
+        <tr>
+          <td class="name">Chuyên viên Vận hành LMS</td>
+          <td>Cấp tài khoản, đăng tải nội dung, phân lộ trình học, xử lý ngoại lệ kỹ thuật, vận hành các thủ tục giao diện với quy trình Core.</td>
+        </tr>
+        <tr>
+          <td class="name">Chuyên viên Quản lý Nội dung và Giảng viên</td>
+          <td>Duy trì kho nội dung theo phiên bản; quản lý pool giảng viên và chuyên gia nội dung; phân bổ giảng viên cho lớp học.</td>
+        </tr>
+        <tr>
+          <td class="name">Chuyên viên Đo lường và Báo cáo</td>
+          <td>Thiết kế khung đo lường theo LTEM; thu thập dữ liệu; phân tích; soạn báo cáo cấp Khối và cấp Bộ phận; theo dõi chỉ số vận hành nội bộ.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">5.3</span>Ma trận RACI cấp Bộ phận</div>
+      <p>R = Người thực hiện, A = Người chịu trách nhiệm cuối cùng, C = Người được tham vấn, I = Người được thông báo.</p>
+      <table class="data">
+        <tr>
+          <th>Hoạt động</th>
+          <th class="raci-cell">Trưởng BP</th>
+          <th class="raci-cell">Thiết kế</th>
+          <th class="raci-cell">LMS</th>
+          <th class="raci-cell">Nội dung</th>
+          <th class="raci-cell">Đo lường</th>
+          <th class="raci-cell">BU Head</th>
+          <th class="raci-cell">SM</th>
+          <th class="raci-cell">Head CACN</th>
+        </tr>
+        <tr>
+          <td>Phê duyệt chương trình đào tạo</td>
+          <td class="raci-cell a">A</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Thiết kế chương trình</td>
+          <td class="raci-cell c">C</td><td class="raci-cell r">R</td><td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Cung cấp nội dung chuyên môn</td>
+          <td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell r">R</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Vận hành LMS</td>
+          <td class="raci-cell a">A</td><td class="raci-cell i">I</td><td class="raci-cell r">R</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Triển khai đào tạo tới học viên</td>
+          <td class="raci-cell a">A</td><td class="raci-cell c">C</td><td class="raci-cell r">R</td><td class="raci-cell r">R</td><td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Đôn đốc học viên hoàn thành</td>
+          <td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell r">R</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Đánh giá hiệu quả đào tạo</td>
+          <td class="raci-cell a">A</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell c">C</td><td class="raci-cell r">R</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Quản lý tài liệu và hồ sơ</td>
+          <td class="raci-cell a">A</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell r">R</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Báo cáo cấp Khối (Trained, Passed)</td>
+          <td class="raci-cell a">A</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell r">R</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td><td class="raci-cell i">I</td>
+        </tr>
+        <tr>
+          <td>Phê duyệt kế hoạch năm</td>
+          <td class="raci-cell r">R</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell c">C</td><td class="raci-cell i">I</td><td class="raci-cell a">A</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- MỤC 6 -->
+  <section class="section">
+    <h2><span class="num">Mục 6.</span>Hoạch định</h2>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">6.1</span>Mục tiêu đào tạo theo năm</div>
+      <p>Trưởng Bộ phận Đào tạo lập Kế hoạch Đào tạo Năm trình Head of CACN phê duyệt trong tháng 1 hằng năm. Kế hoạch bao gồm:</p>
+      <ul>
+        <li>Mục tiêu định lượng cho từng chương trình (số học viên Trained, tỷ lệ Passed Test, độ phủ đào tạo)</li>
+        <li>Danh mục chương trình theo Danh mục Dịch vụ (Mục 4.4)</li>
+        <li>Lịch ban hành chương trình mới và rà soát chương trình hiện hành</li>
+        <li>Ngân sách dự kiến</li>
+        <li>Nhân lực và nguồn lực cần thiết</li>
+      </ul>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">6.2</span>Quản trị rủi ro</div>
+      <p>Danh mục rủi ro cấp Bộ phận được rà soát hằng quý:</p>
+      <table class="data">
+        <tr>
+          <th>Mã</th>
+          <th>Mô tả rủi ro</th>
+          <th>Biện pháp giảm thiểu</th>
+        </tr>
+        <tr>
+          <td class="code">R-01</td>
+          <td>Phụ thuộc giảng viên hoặc chuyên gia nội dung đơn lẻ</td>
+          <td>Mỗi chương trình có tối thiểu hai người có khả năng giảng dạy hoặc cung cấp nội dung.</td>
+        </tr>
+        <tr>
+          <td class="code">R-02</td>
+          <td>Nội dung chuyên môn của BU không cập nhật kịp thay đổi chính sách hoặc sản phẩm</td>
+          <td>Rà soát nội dung định kỳ sáu tháng một lần. Khi BU thay đổi chính sách, BU thông báo Bộ phận Đào tạo trong vòng 5 ngày.</td>
+        </tr>
+        <tr>
+          <td class="code">R-03</td>
+          <td>Hệ thống LMS gián đoạn ảnh hưởng đợt Onboarding</td>
+          <td>Quy trình S1 có phương án dự phòng đào tạo trực tiếp; nhà cung cấp LMS có cam kết SLA.</td>
+        </tr>
+        <tr>
+          <td class="code">R-04</td>
+          <td>Tỷ lệ Passed Test thấp dưới mục tiêu</td>
+          <td>M1 phân tích nguyên nhân theo COM-B; đề xuất điều chỉnh thiết kế chương trình hoặc giải pháp ngoài đào tạo.</td>
+        </tr>
+        <tr>
+          <td class="code">R-05</td>
+          <td>Hồ sơ đào tạo thất lạc hoặc không truy xuất được</td>
+          <td>Áp dụng M2 Kiểm soát Tài liệu và Hồ sơ; mọi hồ sơ có mã định danh; sao lưu định kỳ.</td>
+        </tr>
+        <tr>
+          <td class="code">R-06</td>
+          <td>Sai lệch giữa chương trình Onboarding và thực tế công việc của Agent tại Store</td>
+          <td>M1 đo lường cấp ba LTEM (Hành vi áp dụng sau đào tạo) qua khảo sát Store Manager và spot-check tại sàn.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">6.3</span>Hành động phòng ngừa</div>
+      <p>Tổng hợp biện pháp phòng ngừa định kỳ từ danh mục rủi ro, tích hợp vào Kế hoạch Đào tạo Năm. Mọi rủi ro có chủ rủi ro được phân công.</p>
+    </div>
+  </section>
+
+  <!-- MỤC 7 -->
+  <section class="section">
+    <h2><span class="num">Mục 7.</span>Nguồn lực Hỗ trợ</h2>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">7.1</span>Nhân lực</div>
+      <p>Cơ cấu nhân sự Bộ phận Đào tạo theo Mục 5.1. Tiêu chuẩn năng lực và kế hoạch phát triển nhân sự được quy định trong Quy hoạch Nhân sự năm.</p>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">7.2</span>Hạ tầng</div>
+      <table class="data">
+        <tr>
+          <th>Loại</th>
+          <th>Mô tả</th>
+          <th>Quản lý bởi</th>
+        </tr>
+        <tr>
+          <td class="name">Hệ thống LMS</td>
+          <td>Nền tảng quản lý học tập trực tuyến theo hợp đồng với nhà cung cấp.</td>
+          <td>Chuyên viên Vận hành LMS (S1)</td>
+        </tr>
+        <tr>
+          <td class="name">Cổng tiếp nhận yêu cầu đào tạo</td>
+          <td>Cổng trực tuyến tiếp nhận yêu cầu đào tạo từ BU, Store, nhân sự nội bộ.</td>
+          <td>Chuyên viên Thiết kế Chương trình (P2)</td>
+        </tr>
+        <tr>
+          <td class="name">Công cụ thiết kế nội dung</td>
+          <td>Phần mềm soạn bài giảng, quay video, biên tập tài liệu.</td>
+          <td>Chuyên viên Thiết kế Chương trình</td>
+        </tr>
+        <tr>
+          <td class="name">Phòng học vật lý</td>
+          <td>Phòng học sử dụng cho đào tạo trực tiếp (nếu có).</td>
+          <td>Chuyên viên Quản lý Nội dung và Giảng viên</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">7.3</span>Năng lực giảng viên và chuyên gia nội dung</div>
+      <ul>
+        <li>Bộ phận Đào tạo duy trì danh sách giảng viên nội bộ và chuyên gia nội dung (SME) phân theo BU.</li>
+        <li>Mỗi giảng viên có hồ sơ năng lực và phải hoàn thành chương trình certification trước khi giảng dạy chính thức. Quy định chi tiết tại SOP-TD-005 (S2).</li>
+        <li>Hợp đồng giảng viên thuê ngoài được phê duyệt bởi Trưởng Bộ phận Đào tạo và tuân thủ quy chế mua sắm Citics.</li>
+      </ul>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">7.4</span>Quản lý tài liệu</div>
+      <p>Quy định chung về phân loại, gán mã, lưu trữ, kiểm soát phiên bản, phân quyền truy cập tài liệu của Bộ phận Đào tạo được mô tả tại SOP-TD-007 (M2 Kiểm soát Tài liệu và Hồ sơ).</p>
+    </div>
+  </section>
+
+  <!-- MỤC 8 -->
+  <section class="section">
+    <h2><span class="num">Mục 8.</span>Bản đồ Quy trình</h2>
+    <p>Bộ phận Đào tạo gồm bảy quy trình, chia thành ba nhóm theo ISO 9001:2015 process approach.</p>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">8.1</span>Nhóm Tạo giá trị (Core)</div>
+      <div class="group-card core">
+        <h3>P1 — Đào tạo Hội nhập</h3>
+        <div class="desc">Đào tạo Agent và Store Manager mới đạt năng lực tối thiểu trước khi vào kinh doanh trên mạng lưới.</div>
+        <table class="data">
+          <tr><th style="width:18%">Mục</th><th>Nội dung</th></tr>
+          <tr><td>Đầu vào</td><td>Danh sách Agent hoặc SM mới từ hai nguồn (SM tự tuyển, Agent tự đăng ký với CACN). Nội dung chuyên môn từ BU theo vai trò.</td></tr>
+          <tr><td>Đầu ra</td><td>Agent hoặc SM đã được kích hoạt dịch vụ. Báo cáo Trained và Passed Test cho từng đợt.</td></tr>
+          <tr><td>Gate quyết định</td><td>Học viên đạt bài đánh giá với ngưỡng 80%. Không đạt: không kích hoạt; chuyển sang lộ trình bổ sung.</td></tr>
+          <tr><td>SOP chi tiết</td><td>SOP-TD-002 (Phase 1)</td></tr>
+        </table>
+      </div>
+      <div class="group-card core">
+        <h3>P2 — Đào tạo theo Yêu cầu</h3>
+        <div class="desc">Tiếp nhận và triển khai các yêu cầu đào tạo phát sinh ngoài chương trình Hội nhập.</div>
+        <table class="data">
+          <tr><th style="width:18%">Mục</th><th>Nội dung</th></tr>
+          <tr><td>Đầu vào</td><td>Yêu cầu đào tạo từ BU, Store, nhân sự nội bộ, hoặc Head of CACN qua cổng tiếp nhận chính thức.</td></tr>
+          <tr><td>Đầu ra</td><td>Chương trình đào tạo được thiết kế và triển khai. Hồ sơ kết quả gửi đơn vị yêu cầu.</td></tr>
+          <tr><td>Gate quyết định</td><td>Phân loại theo COM-B: yêu cầu được chấp nhận đào tạo, hoặc đề xuất giải pháp ngoài đào tạo nếu nguyên nhân gốc không thuộc thiếu năng lực.</td></tr>
+          <tr><td>SOP chi tiết</td><td>SOP-TD-004 (Phase 2)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">8.2</span>Nhóm Hỗ trợ (Support)</div>
+      <div class="group-card support">
+        <h3>S1 — Vận hành Hệ thống Đào tạo Trực tuyến</h3>
+        <div class="desc">Cung cấp tài khoản, đăng tải nội dung, phân lộ trình học, hỗ trợ kỹ thuật cho học viên trên LMS.</div>
+        <table class="data">
+          <tr><th style="width:18%">Mục</th><th>Nội dung</th></tr>
+          <tr><td>Đầu vào</td><td>Yêu cầu cấp tài khoản, đăng tải nội dung, phân bài học, khoá mềm, mở khoá từ quy trình Core (P1, P2).</td></tr>
+          <tr><td>Đầu ra</td><td>Tài khoản đã cấp. Nội dung đã đăng tải. Lộ trình học đã được gán. Yêu cầu hỗ trợ kỹ thuật đã xử lý.</td></tr>
+          <tr><td>Phạm vi không thuộc S1</td><td>S1 không thiết kế nội dung, không quyết định lộ trình học, không quyết định Agent đạt hay không đạt. Các quyết định này thuộc P1, P2.</td></tr>
+          <tr><td>SOP chi tiết</td><td>SOP-TD-003 (Phase 1)</td></tr>
+        </table>
+      </div>
+      <div class="group-card support">
+        <h3>S2 — Quản lý Nội dung và Giảng viên</h3>
+        <div class="desc">Duy trì danh mục nội dung theo phiên bản, quản lý pool giảng viên và chuyên gia nội dung.</div>
+        <table class="data">
+          <tr><th style="width:18%">Mục</th><th>Nội dung</th></tr>
+          <tr><td>Đầu vào</td><td>Nội dung chuyên môn mới từ BU. Đăng ký giảng viên mới. Yêu cầu phân bổ giảng viên cho lớp học từ P1, P2.</td></tr>
+          <tr><td>Đầu ra</td><td>Nội dung được phiên bản hoá và lưu trữ. Giảng viên được duyệt và đưa vào pool. Giảng viên được phân bổ cho lớp học cụ thể.</td></tr>
+          <tr><td>SOP chi tiết</td><td>SOP-TD-005 (Phase 2)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">8.3</span>Nhóm Quản trị (Management)</div>
+      <div class="group-card management">
+        <h3>M1 — Đánh giá Hiệu quả Đào tạo</h3>
+        <div class="desc">Đo lường hiệu quả các chương trình đào tạo theo bốn cấp đầu của LTEM.</div>
+        <table class="data">
+          <tr><th style="width:18%">Mục</th><th>Nội dung</th></tr>
+          <tr><td>Đầu vào</td><td>Dữ liệu đào tạo từ P1 và P2. Khảo sát người học, người quản lý, kết quả spot-check tại sàn.</td></tr>
+          <tr><td>Đầu ra</td><td>Báo cáo hiệu quả đào tạo theo chương trình và toàn Bộ phận. Đề xuất cải tiến.</td></tr>
+          <tr><td>SOP chi tiết</td><td>SOP-TD-006 (Phase 3)</td></tr>
+        </table>
+      </div>
+      <div class="group-card management">
+        <h3>M2 — Kiểm soát Tài liệu và Hồ sơ</h3>
+        <div class="desc">Phân loại, gán mã, lưu trữ, kiểm soát phiên bản tài liệu và hồ sơ đào tạo.</div>
+        <table class="data">
+          <tr><th style="width:18%">Mục</th><th>Nội dung</th></tr>
+          <tr><td>Đầu vào</td><td>Tài liệu hoặc hồ sơ mới từ tất cả các quy trình.</td></tr>
+          <tr><td>Đầu ra</td><td>Tài liệu được phân loại, gán mã, lưu trữ theo quy định; có thể truy xuất theo yêu cầu.</td></tr>
+          <tr><td>SOP chi tiết</td><td>SOP-TD-007 (Phase 3)</td></tr>
+        </table>
+      </div>
+      <div class="group-card management">
+        <h3>M3 — Hoạch định, Rủi ro, Tuân thủ</h3>
+        <div class="desc">Lập Kế hoạch Đào tạo Năm, quản trị danh mục rủi ro, đảm bảo tuân thủ chính sách Citics và pháp luật.</div>
+        <table class="data">
+          <tr><th style="width:18%">Mục</th><th>Nội dung</th></tr>
+          <tr><td>Đầu vào</td><td>Mục tiêu chiến lược năm. Báo cáo từ P1, P2, M1. Cập nhật chính sách Citics và quy định pháp luật.</td></tr>
+          <tr><td>Đầu ra</td><td>Kế hoạch Đào tạo Năm được phê duyệt. Danh mục rủi ro được cập nhật. Báo cáo tuân thủ định kỳ.</td></tr>
+          <tr><td>SOP chi tiết</td><td>SOP-TD-008 (Phase 3)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">8.4</span>Sơ đồ tương tác giữa các Quy trình</div>
+      <p>Mọi tương tác giữa các quy trình phải đi qua giao diện được khai báo dưới đây. Không có tương tác ngầm.</p>
+
+      <div class="subhead" style="margin-top:14px;">Nguyên tắc giao diện</div>
+      <ol>
+        <li>Quy trình Core mô tả chương trình. Quy trình Support mô tả hệ thống và nguồn lực.</li>
+        <li>Khi Core cần Support, Core gọi thủ tục Support đã được khai báo. Core không trực tiếp thao tác trong phạm vi Support.</li>
+        <li>Mỗi giao diện có mã, thủ tục được gọi, đầu vào, đầu ra, thời gian xử lý cam kết.</li>
+        <li>Khi cần thêm giao diện mới, cập nhật bảng này trước khi triển khai.</li>
+      </ol>
+
+      <div class="subhead" style="margin-top:14px;">Giao diện Core ↔ Support</div>
+      <table class="data">
+        <tr>
+          <th>Mã</th>
+          <th>Gọi</th>
+          <th>Được gọi</th>
+          <th>Thủ tục</th>
+          <th>Thời gian xử lý</th>
+        </tr>
+        <tr>
+          <td class="code">INT-01</td>
+          <td>P1</td>
+          <td>S1</td>
+          <td>S1.3 Cấp tài khoản LMS cho Agent hoặc SM mới</td>
+          <td>1 ngày làm việc</td>
+        </tr>
+        <tr>
+          <td class="code">INT-02</td>
+          <td>P1</td>
+          <td>S1</td>
+          <td>S1.5 Phân lộ trình học theo vai trò</td>
+          <td>1 ngày làm việc</td>
+        </tr>
+        <tr>
+          <td class="code">INT-03</td>
+          <td>P1</td>
+          <td>S1</td>
+          <td>S1.7 Khoá mềm tài khoản khi học viên không hoàn thành đúng hạn</td>
+          <td>Tự động theo quy tắc</td>
+        </tr>
+        <tr>
+          <td class="code">INT-04</td>
+          <td>P1</td>
+          <td>S2</td>
+          <td>S2.4 Cung cấp bộ nội dung chuyên môn theo vai trò Agent</td>
+          <td>Theo lịch chu trình ADDIE</td>
+        </tr>
+        <tr>
+          <td class="code">INT-05</td>
+          <td>P2</td>
+          <td>S1</td>
+          <td>S1.3 Cấp tài khoản LMS cho học viên thuộc chương trình theo yêu cầu</td>
+          <td>1 ngày làm việc</td>
+        </tr>
+        <tr>
+          <td class="code">INT-06</td>
+          <td>P2</td>
+          <td>S2</td>
+          <td>S2.6 Phân bổ giảng viên cho lớp học theo yêu cầu</td>
+          <td>3 ngày làm việc</td>
+        </tr>
+      </table>
+
+      <div class="subhead" style="margin-top:14px;">Giao diện Core ↔ Management</div>
+      <table class="data">
+        <tr>
+          <th>Mã</th>
+          <th>Quan hệ</th>
+          <th>Mô tả</th>
+        </tr>
+        <tr>
+          <td class="code">INT-07</td>
+          <td>M1 → P1</td>
+          <td>M1 chỉ định khung đo lường cho P1. P1 cung cấp dữ liệu kết quả từng đợt về M1.</td>
+        </tr>
+        <tr>
+          <td class="code">INT-08</td>
+          <td>M1 → P2</td>
+          <td>M1 chỉ định khung đo lường cho P2. P2 cung cấp dữ liệu kết quả từng yêu cầu về M1.</td>
+        </tr>
+        <tr>
+          <td class="code">INT-09</td>
+          <td>M2 ← Mọi quy trình</td>
+          <td>Mọi quy trình nộp tài liệu hoặc hồ sơ mới qua M2 để gán mã, phiên bản hoá và lưu trữ.</td>
+        </tr>
+        <tr>
+          <td class="code">INT-10</td>
+          <td>M3 → Mọi quy trình</td>
+          <td>M3 phê duyệt kế hoạch năm cho từng quy trình. Mọi quy trình báo cáo tiến độ thực hiện kế hoạch về M3.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- MỤC 9 -->
+  <section class="section">
+    <h2><span class="num">Mục 9.</span>Đánh giá Hiệu quả</h2>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">9.1</span>Chỉ số báo cáo cấp Khối</div>
+      <p>Hai chỉ số trọng yếu báo cáo Head of CACN, tách theo nguồn (Hội nhập, Theo yêu cầu) và theo vai trò Agent.</p>
+      <table class="data">
+        <tr>
+          <th>STT</th>
+          <th>Tên chỉ số</th>
+          <th>Định nghĩa</th>
+          <th>Tần suất</th>
+        </tr>
+        <tr>
+          <td class="num">01</td>
+          <td class="name">Trained</td>
+          <td>Số học viên đã tham gia đào tạo, tính theo điểm danh hoặc hoàn thành tối thiểu một mô-đun.</td>
+          <td>Tuần, Tháng, Quý</td>
+        </tr>
+        <tr>
+          <td class="num">02</td>
+          <td class="name">Passed Test</td>
+          <td>Số học viên đạt bài đánh giá với ngưỡng đạt 80%.</td>
+          <td>Tuần, Tháng, Quý</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">9.2</span>Chỉ số vận hành nội bộ</div>
+      <p>Chỉ số dùng trong nội bộ Bộ phận Đào tạo, không xuất hiện trong báo cáo cấp Khối.</p>
+      <table class="data">
+        <tr>
+          <th>STT</th>
+          <th>Tên chỉ số</th>
+          <th>Định nghĩa</th>
+          <th>Mục tiêu</th>
+          <th>Tần suất</th>
+        </tr>
+        <tr>
+          <td class="num">01</td>
+          <td class="name">Thời gian xử lý từ yêu cầu đến phê duyệt thiết kế</td>
+          <td>Số ngày từ khi tiếp nhận yêu cầu đào tạo đến khi thiết kế chương trình được phê duyệt.</td>
+          <td>≤ 10 ngày (lớp học); ≤ 15 ngày (e-learning)</td>
+          <td>Tháng</td>
+        </tr>
+        <tr>
+          <td class="num">02</td>
+          <td class="name">Tỷ lệ chuyên gia phản hồi đúng hạn</td>
+          <td>Tỷ lệ chuyên gia nội dung hoàn thành phản hồi trong 5 ngày làm việc trên tổng số yêu cầu.</td>
+          <td>≥ 80%</td>
+          <td>Tháng</td>
+        </tr>
+        <tr>
+          <td class="num">03</td>
+          <td class="name">Tỷ lệ qua cổng kiểm soát chất lượng lần đầu</td>
+          <td>Tỷ lệ hồ sơ qua các cổng kiểm soát chất lượng (G1 đến G6) thành công ngay lần nộp đầu tiên.</td>
+          <td>≥ 70%</td>
+          <td>Tháng</td>
+        </tr>
+        <tr>
+          <td class="num">04</td>
+          <td class="name">Độ phủ đào tạo</td>
+          <td>Tỷ lệ nhân viên thuộc nhóm mục tiêu đã hoàn thành chương trình trên tổng số thuộc nhóm.</td>
+          <td>≥ 80%</td>
+          <td>Tháng</td>
+        </tr>
+        <tr>
+          <td class="num">05</td>
+          <td class="name">Tỷ lệ đề xuất giải pháp ngoài đào tạo</td>
+          <td>Tỷ lệ yêu cầu được phân loại không phải nhu cầu đào tạo sau khi rà soát đầu vào theo COM-B.</td>
+          <td>Theo dõi xu hướng</td>
+          <td>Quý</td>
+        </tr>
+        <tr>
+          <td class="num">06</td>
+          <td class="name">Thời gian xử lý toàn bộ chu trình</td>
+          <td>Số ngày từ khi tiếp nhận yêu cầu đến khi hoàn tất triển khai. Dùng làm cam kết phục vụ với đơn vị yêu cầu.</td>
+          <td>Theo cam kết của từng loại chương trình</td>
+          <td>Tháng</td>
+        </tr>
+        <tr>
+          <td class="num">07</td>
+          <td class="name">Tỷ lệ Agent kích hoạt thành công lần đầu</td>
+          <td>Tỷ lệ Agent đạt bài đánh giá trong lần thi đầu tiên, tính trên tổng số Agent vào đợt Onboarding.</td>
+          <td>≥ 70%</td>
+          <td>Tháng</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">9.3</span>Họp Xem xét cấp Bộ phận</div>
+      <ul>
+        <li>Tần suất: hàng tháng</li>
+        <li>Người chủ trì: Trưởng Bộ phận Đào tạo</li>
+        <li>Thành phần: Toàn bộ nhân sự Bộ phận Đào tạo</li>
+        <li>Nội dung: Rà soát chỉ số vận hành nội bộ; sự không phù hợp phát sinh; tiến độ hành động khắc phục; cập nhật rủi ro</li>
+        <li>Biên bản: lưu tại M2, mã BB-XEMXET-BP-YYYY-NN</li>
+      </ul>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">9.4</span>Họp Xem xét cấp Khối</div>
+      <ul>
+        <li>Tần suất: hàng quý</li>
+        <li>Người chủ trì: Head of CACN</li>
+        <li>Thành phần: Trưởng Bộ phận Đào tạo, đại diện BU, đại diện Store</li>
+        <li>Nội dung: Báo cáo Trained và Passed Test cấp Khối; quyết định điều chỉnh chiến lược đào tạo; phê duyệt thay đổi quan trọng</li>
+        <li>Biên bản: lưu tại M2, mã BB-XEMXET-KHOI-YYYY-QN</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MỤC 10 -->
+  <section class="section">
+    <h2><span class="num">Mục 10.</span>Cải tiến</h2>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">10.1</span>Sự không phù hợp</div>
+      <p>Bất kỳ sai lệch nào giữa quy trình quy định và thực tế thực hiện, hoặc kết quả không đạt mục tiêu, được ghi nhận là sự không phù hợp. Nguồn phát hiện gồm:</p>
+      <ul>
+        <li>Báo cáo từ học viên, Store Manager, BU</li>
+        <li>Kết quả đo lường của M1</li>
+        <li>Kiểm tra mẫu (spot-check) định kỳ tại Store</li>
+        <li>Báo cáo từ giảng viên và chuyên gia nội dung</li>
+        <li>Tự rà soát trong Họp Xem xét cấp Bộ phận</li>
+      </ul>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">10.2</span>Hành động khắc phục</div>
+      <p>Quy trình xử lý sự không phù hợp gồm năm bước:</p>
+      <ol>
+        <li>Ghi nhận sự không phù hợp vào Nhật ký, mã NC-YYYY-NNN</li>
+        <li>Phân tích nguyên nhân gốc (Root Cause Analysis) trong vòng 10 ngày làm việc</li>
+        <li>Đề xuất hành động khắc phục, gồm: hành động sửa chữa tức thời và hành động ngăn tái diễn</li>
+        <li>Triển khai và theo dõi tiến độ</li>
+        <li>Đánh giá hiệu quả khắc phục sau 30 ngày; đóng hồ sơ nếu đạt, hoặc mở vòng khắc phục mới</li>
+      </ol>
+    </div>
+
+    <div class="sub-block">
+      <div class="subhead"><span class="tag">10.3</span>Cải tiến liên tục</div>
+      <ul>
+        <li>Rà soát quy trình theo chu kỳ 12 tháng, hoặc bất thường khi có thay đổi quan trọng</li>
+        <li>Sau mỗi đợt Onboarding lớn, tổ chức họp Lessons Learned trong vòng 15 ngày kết thúc đợt</li>
+        <li>Khuyến khích đề xuất cải tiến từ giảng viên, học viên, Store Manager qua kênh tiếp nhận</li>
+        <li>Đề xuất cải tiến được phân loại và xử lý trong Họp Xem xét cấp Bộ phận hàng tháng</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PHỤ LỤC -->
+  <section class="section">
+    <h2><span class="num">Phụ lục</span>Tài liệu đính kèm</h2>
+    <table class="data">
+      <tr>
+        <th>Mã</th>
+        <th>Tên tài liệu</th>
+        <th>Loại</th>
+        <th>Giai đoạn ban hành</th>
+      </tr>
+      <tr>
+        <td class="code">SOP-TD-002</td>
+        <td class="name">Quy trình Đào tạo Hội nhập (P1)</td>
+        <td>SOP con</td>
+        <td>Phase 1</td>
+      </tr>
+      <tr>
+        <td class="code">SOP-TD-003</td>
+        <td class="name">Quy trình Vận hành Hệ thống Đào tạo Trực tuyến (S1)</td>
+        <td>SOP con</td>
+        <td>Phase 1</td>
+      </tr>
+      <tr>
+        <td class="code">SOP-TD-004</td>
+        <td class="name">Quy trình Đào tạo theo Yêu cầu (P2)</td>
+        <td>SOP con</td>
+        <td>Phase 2</td>
+      </tr>
+      <tr>
+        <td class="code">SOP-TD-005</td>
+        <td class="name">Quy trình Quản lý Nội dung và Giảng viên (S2)</td>
+        <td>SOP con</td>
+        <td>Phase 2</td>
+      </tr>
+      <tr>
+        <td class="code">SOP-TD-006</td>
+        <td class="name">Quy trình Đánh giá Hiệu quả Đào tạo (M1)</td>
+        <td>SOP con</td>
+        <td>Phase 3</td>
+      </tr>
+      <tr>
+        <td class="code">SOP-TD-007</td>
+        <td class="name">Quy trình Kiểm soát Tài liệu và Hồ sơ (M2)</td>
+        <td>SOP con</td>
+        <td>Phase 3</td>
+      </tr>
+      <tr>
+        <td class="code">SOP-TD-008</td>
+        <td class="name">Quy trình Hoạch định, Rủi ro, Tuân thủ (M3)</td>
+        <td>SOP con</td>
+        <td>Phase 3</td>
+      </tr>
+      <tr>
+        <td class="code">QĐ 0704/2026</td>
+        <td class="name">Quyết định 0704/2026/QĐ-CACN ngày 07/04/2026 về vai trò Agent</td>
+        <td>Cơ sở pháp lý</td>
+        <td>Đã ban hành</td>
+      </tr>
+    </table>
+  </section>
+
+  <footer class="doc-foot">
+    <div><b>SOP-TD-001</b> phiên bản 1.0 · Bản thảo trình duyệt · Người soạn: Jayden Pham</div>
+    <div>Phê duyệt: Head of CACN · Ghi nhận: CEO Citics</div>
+  </footer>
+
+</div>
+</body>
+</html>
