@@ -204,6 +204,12 @@
   .interface-note b { color: #92400E; }
 
   .raci-cell { text-align: center; font-weight: 700; font-size: 12px; }
+  th.raci-cell { white-space: normal; vertical-align: bottom; padding: 8px 6px; line-height: 1.25; font-size: 11px; min-width: 72px; max-width: 100px; }
+  table.raci-legend { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 14px; background: var(--slate-50); border-radius: 8px; overflow: hidden; }
+  table.raci-legend th, table.raci-legend td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--slate-100); }
+  table.raci-legend th { background: var(--blue-soft); color: var(--blue-dark); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+  table.raci-legend td.code { font-weight: 700; color: var(--slate-900); font-family: "SF Mono", Menlo, monospace; font-size: 11.5px; white-space: nowrap; }
+  table.raci-legend tr:last-child td { border-bottom: 0; }
   .raci-cell.r { color: var(--red); }
   .raci-cell.a { color: var(--blue); }
   .raci-cell.c { color: var(--purple); }
@@ -387,12 +393,12 @@
     <h2><span class="num">Mục 3.</span>Bối cảnh Bộ phận Đào tạo</h2>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">4.1</span>Sứ mệnh</div>
+      <div class="subhead"><span class="tag">3.1</span>Sứ mệnh</div>
       <p>Cung cấp năng lực cho Agent, Store Manager, và nhân sự nội bộ CACN, BU, Store để vận hành mạng lưới Citics đạt chuẩn chất lượng và tuân thủ.</p>
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">4.2</span>Mục tiêu chiến lược</div>
+      <div class="subhead"><span class="tag">3.2</span>Mục tiêu chiến lược</div>
       <ul>
         <li>Đảm bảo mọi Agent vào mạng lưới đạt năng lực tối thiểu thông qua chu trình Onboarding của CACN.</li>
         <li>Cung cấp đào tạo theo yêu cầu cho BU, Store, và nhân sự nội bộ với thời gian xử lý cam kết.</li>
@@ -402,7 +408,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">4.3</span>Các bên liên quan và nhu cầu</div>
+      <div class="subhead"><span class="tag">3.3</span>Các bên liên quan và nhu cầu</div>
       <table class="data">
         <tr>
           <th>Bên liên quan</th>
@@ -440,7 +446,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">4.4</span>Danh mục Dịch vụ</div>
+      <div class="subhead"><span class="tag">3.4</span>Danh mục Dịch vụ</div>
       <table class="data">
         <tr>
           <th>Mã</th>
@@ -487,7 +493,7 @@
     <h2><span class="num">Mục 4.</span>Vai trò và Trách nhiệm</h2>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">5.1</span>Sơ đồ tổ chức Bộ phận Đào tạo</div>
+      <div class="subhead"><span class="tag">4.1</span>Sơ đồ tổ chức Bộ phận Đào tạo</div>
       <p>Bộ phận Đào tạo trực thuộc Head of CACN. Bên trong Bộ phận gồm các vị trí chuyên môn sau:</p>
       <ul>
         <li>Trưởng Bộ phận Đào tạo (Training Manager)</li>
@@ -500,7 +506,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">5.2</span>Trách nhiệm chính từng vai trò</div>
+      <div class="subhead"><span class="tag">4.2</span>Trách nhiệm chính từng vai trò</div>
       <table class="data">
         <tr>
           <th>Vai trò</th>
@@ -530,19 +536,68 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">5.3</span>Ma trận RACI cấp Bộ phận</div>
+      <div class="subhead"><span class="tag">4.3</span>Ma trận RACI cấp Bộ phận</div>
       <p>R = Người thực hiện, A = Người chịu trách nhiệm cuối cùng, C = Người được tham vấn, I = Người được thông báo.</p>
+
+      <table class="raci-legend">
+        <tr>
+          <th style="width: 26%;">Tên trong ma trận</th>
+          <th>Vai trò đầy đủ</th>
+          <th style="width: 28%;">Thuộc đơn vị</th>
+        </tr>
+        <tr>
+          <td class="code">Trưởng BP Đào tạo</td>
+          <td>Trưởng Bộ phận Đào tạo</td>
+          <td>Bộ phận Đào tạo, CACN</td>
+        </tr>
+        <tr>
+          <td class="code">CV Thiết kế CT</td>
+          <td>Chuyên viên Thiết kế Chương trình</td>
+          <td>Bộ phận Đào tạo, CACN</td>
+        </tr>
+        <tr>
+          <td class="code">CV Vận hành LMS</td>
+          <td>Chuyên viên Vận hành Hệ thống Đào tạo Trực tuyến</td>
+          <td>Bộ phận Đào tạo, CACN</td>
+        </tr>
+        <tr>
+          <td class="code">CV Nội dung & GV</td>
+          <td>Chuyên viên Quản lý Nội dung và Giảng viên</td>
+          <td>Bộ phận Đào tạo, CACN</td>
+        </tr>
+        <tr>
+          <td class="code">CV Đo lường & BC</td>
+          <td>Chuyên viên Đo lường và Báo cáo</td>
+          <td>Bộ phận Đào tạo, CACN</td>
+        </tr>
+        <tr>
+          <td class="code">BU Head</td>
+          <td>Trưởng Đơn vị Kinh doanh</td>
+          <td>BU Mortgages, BU Homes Secondary, BU Value</td>
+        </tr>
+        <tr>
+          <td class="code">Store Manager</td>
+          <td>Quản lý Sàn</td>
+          <td>Store (Inhouse, Partnership, Virtual)</td>
+        </tr>
+        <tr>
+          <td class="code">Head of CACN</td>
+          <td>Trưởng Khối CACN</td>
+          <td>CACN</td>
+        </tr>
+      </table>
+
       <table class="data">
         <tr>
           <th>Hoạt động</th>
-          <th class="raci-cell">Trưởng BP</th>
-          <th class="raci-cell">Thiết kế</th>
-          <th class="raci-cell">LMS</th>
-          <th class="raci-cell">Nội dung</th>
-          <th class="raci-cell">Đo lường</th>
+          <th class="raci-cell">Trưởng BP Đào tạo</th>
+          <th class="raci-cell">CV Thiết kế CT</th>
+          <th class="raci-cell">CV Vận hành LMS</th>
+          <th class="raci-cell">CV Nội dung &amp; GV</th>
+          <th class="raci-cell">CV Đo lường &amp; BC</th>
           <th class="raci-cell">BU Head</th>
-          <th class="raci-cell">SM</th>
-          <th class="raci-cell">Head CACN</th>
+          <th class="raci-cell">Store Manager</th>
+          <th class="raci-cell">Head of CACN</th>
         </tr>
         <tr>
           <td>Phê duyệt chương trình đào tạo</td>
@@ -593,7 +648,7 @@
     <h2><span class="num">Mục 5.</span>Hoạch định</h2>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">6.1</span>Mục tiêu đào tạo theo năm</div>
+      <div class="subhead"><span class="tag">5.1</span>Mục tiêu đào tạo theo năm</div>
       <p>Trưởng Bộ phận Đào tạo lập Kế hoạch Đào tạo Năm trình Head of CACN phê duyệt trong tháng 1 hằng năm. Kế hoạch bao gồm:</p>
       <ul>
         <li>Mục tiêu định lượng cho từng chương trình (số học viên Trained, tỷ lệ Passed Test, độ phủ đào tạo)</li>
@@ -605,7 +660,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">6.2</span>Quản trị rủi ro</div>
+      <div class="subhead"><span class="tag">5.2</span>Quản trị rủi ro</div>
       <p>Danh mục rủi ro cấp Bộ phận được rà soát hằng quý:</p>
       <table class="data">
         <tr>
@@ -647,7 +702,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">6.3</span>Hành động phòng ngừa</div>
+      <div class="subhead"><span class="tag">5.3</span>Hành động phòng ngừa</div>
       <p>Tổng hợp biện pháp phòng ngừa định kỳ từ danh mục rủi ro, tích hợp vào Kế hoạch Đào tạo Năm. Mọi rủi ro có chủ rủi ro được phân công.</p>
     </div>
   </section>
@@ -657,12 +712,12 @@
     <h2><span class="num">Mục 6.</span>Nguồn lực Hỗ trợ</h2>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">7.1</span>Nhân lực</div>
+      <div class="subhead"><span class="tag">6.1</span>Nhân lực</div>
       <p>Cơ cấu nhân sự Bộ phận Đào tạo theo Mục 4.1. Tiêu chuẩn năng lực và kế hoạch phát triển nhân sự được quy định trong Quy hoạch Nhân sự năm.</p>
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">7.2</span>Hạ tầng</div>
+      <div class="subhead"><span class="tag">6.2</span>Hạ tầng</div>
       <table class="data">
         <tr>
           <th>Loại</th>
@@ -693,7 +748,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">7.3</span>Năng lực giảng viên và chuyên gia nội dung</div>
+      <div class="subhead"><span class="tag">6.3</span>Năng lực giảng viên và chuyên gia nội dung</div>
       <ul>
         <li>Bộ phận Đào tạo duy trì danh sách giảng viên nội bộ và chuyên gia nội dung (SME) phân theo BU.</li>
         <li>Mỗi giảng viên có hồ sơ năng lực và phải hoàn thành chương trình certification trước khi giảng dạy chính thức. Quy định chi tiết tại SOP-TD-005 (S2).</li>
@@ -702,7 +757,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">7.4</span>Quản lý tài liệu</div>
+      <div class="subhead"><span class="tag">6.4</span>Quản lý tài liệu</div>
       <p>Quy định chung về phân loại, gán mã, lưu trữ, kiểm soát phiên bản, phân quyền truy cập tài liệu của Bộ phận Đào tạo được mô tả tại SOP-TD-007 (M2 Kiểm soát Tài liệu và Hồ sơ).</p>
     </div>
   </section>
@@ -713,7 +768,7 @@
     <p>Bộ phận Đào tạo gồm bảy quy trình, chia thành ba nhóm theo ISO 9001:2015 process approach.</p>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">8.1</span>Nhóm Tạo giá trị (Core)</div>
+      <div class="subhead"><span class="tag">7.1</span>Nhóm Tạo giá trị (Core)</div>
       <div class="group-card core">
         <h3>P1 — Đào tạo Hội nhập</h3>
         <div class="desc">Đào tạo Agent và Store Manager mới đạt năng lực tối thiểu trước khi vào kinh doanh trên mạng lưới.</div>
@@ -739,7 +794,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">8.2</span>Nhóm Hỗ trợ (Support)</div>
+      <div class="subhead"><span class="tag">7.2</span>Nhóm Hỗ trợ (Support)</div>
       <div class="group-card support">
         <h3>S1 — Vận hành Hệ thống Đào tạo Trực tuyến</h3>
         <div class="desc">Cung cấp tài khoản, đăng tải nội dung, phân lộ trình học, hỗ trợ kỹ thuật cho học viên trên LMS.</div>
@@ -764,7 +819,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">8.3</span>Nhóm Quản trị (Management)</div>
+      <div class="subhead"><span class="tag">7.3</span>Nhóm Quản trị (Management)</div>
       <div class="group-card management">
         <h3>M1 — Đánh giá Hiệu quả Đào tạo</h3>
         <div class="desc">Đo lường hiệu quả các chương trình đào tạo theo bốn cấp đầu của LTEM.</div>
@@ -798,7 +853,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">8.4</span>Sơ đồ tương tác giữa các Quy trình</div>
+      <div class="subhead"><span class="tag">7.4</span>Sơ đồ tương tác giữa các Quy trình</div>
       <p>Mọi tương tác giữa các quy trình phải đi qua giao diện được khai báo dưới đây. Không có tương tác ngầm.</p>
 
       <div class="subhead" style="margin-top:14px;">Nguyên tắc giao diện</div>
@@ -898,7 +953,7 @@
     <h2><span class="num">Mục 8.</span>Đánh giá Hiệu quả</h2>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">9.1</span>Chỉ số báo cáo cấp Khối</div>
+      <div class="subhead"><span class="tag">8.1</span>Chỉ số báo cáo cấp Khối</div>
       <p>Hai chỉ số trọng yếu báo cáo Head of CACN, tách theo nguồn (Hội nhập, Theo yêu cầu) và theo vai trò Agent.</p>
       <table class="data">
         <tr>
@@ -923,7 +978,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">9.2</span>Chỉ số vận hành nội bộ</div>
+      <div class="subhead"><span class="tag">8.2</span>Chỉ số vận hành nội bộ</div>
       <p>Chỉ số dùng trong nội bộ Bộ phận Đào tạo, không xuất hiện trong báo cáo cấp Khối.</p>
       <table class="data">
         <tr>
@@ -986,7 +1041,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">9.3</span>Họp Xem xét cấp Bộ phận</div>
+      <div class="subhead"><span class="tag">8.3</span>Họp Xem xét cấp Bộ phận</div>
       <ul>
         <li>Tần suất: hàng tháng</li>
         <li>Người chủ trì: Trưởng Bộ phận Đào tạo</li>
@@ -997,7 +1052,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">9.4</span>Họp Xem xét cấp Khối</div>
+      <div class="subhead"><span class="tag">8.4</span>Họp Xem xét cấp Khối</div>
       <ul>
         <li>Tần suất: hàng quý</li>
         <li>Người chủ trì: Head of CACN</li>
@@ -1013,7 +1068,7 @@
     <h2><span class="num">Mục 9.</span>Cải tiến</h2>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">10.1</span>Sự không phù hợp</div>
+      <div class="subhead"><span class="tag">9.1</span>Sự không phù hợp</div>
       <p>Bất kỳ sai lệch nào giữa quy trình quy định và thực tế thực hiện, hoặc kết quả không đạt mục tiêu, được ghi nhận là sự không phù hợp. Nguồn phát hiện gồm:</p>
       <ul>
         <li>Báo cáo từ học viên, Store Manager, BU</li>
@@ -1025,7 +1080,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">10.2</span>Hành động khắc phục</div>
+      <div class="subhead"><span class="tag">9.2</span>Hành động khắc phục</div>
       <p>Quy trình xử lý sự không phù hợp gồm năm bước:</p>
       <ol>
         <li>Ghi nhận sự không phù hợp vào Nhật ký, mã NC-YYYY-NNN</li>
@@ -1037,7 +1092,7 @@
     </div>
 
     <div class="sub-block">
-      <div class="subhead"><span class="tag">10.3</span>Cải tiến liên tục</div>
+      <div class="subhead"><span class="tag">9.3</span>Cải tiến liên tục</div>
       <ul>
         <li>Rà soát quy trình theo chu kỳ 12 tháng, hoặc bất thường khi có thay đổi quan trọng</li>
         <li>Sau mỗi đợt Onboarding lớn, tổ chức họp Lessons Learned trong vòng 15 ngày kết thúc đợt</li>
